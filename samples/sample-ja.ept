@@ -126,11 +126,11 @@ Emacs というくらいで、文字列の行はバックスラッシュで連結できます"))
  (ept-text "  (current-time-string)\n\n"
 	   (cons (current-time-string) 'ept-highlight-face)
 	   "\n\n\n"
-	   "  (char-list-to-string
+	   "  (apply 'string
    (nreverse
-    (string-to-char-list \"this is test\")))\n\n"
-	   (cons (char-list-to-string
-		  (nreverse (string-to-char-list "this is test")))
+    (mapcar 'identity \"this is test\")))\n\n"
+	   (cons (apply 'string
+		  (nreverse (mapcar 'identity "this is test")))
 		 'ept-highlight-face)))
 
 (ept-page
