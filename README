@@ -16,7 +16,7 @@ Features:
 Requirements:
 
 * Emacs 21
-* APEL
+* APEL (A Portable Emacs Library -- http://cvs.m17n.org/elisp/APEL/)
 * True Type font (Kochi font is recommended)
   You can obtain kochi font from following site:
 

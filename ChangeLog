@@ -1,3 +1,23 @@
+2002-03-04  Yuuichi Teranishi  <teranisi@gohome.org>
+
+	* ept.el (ept-title-face-font): Set default value as default font.
+	(ept-body-face-font): Ditto.
+	(ept-highlight-face-font): Ditto.
+	(ept-separator-face-font): Ditto.
+	(ept-item-face-font): Ditto.
+	(ept-item-point-face-font): Ditto.
+	(ept-basic-face-font): Ditto.
+
+	* ept-setup.el (ept-setup-fontset-maybe): New inline function.
+	(ept-title-face-font): Setup using above function.
+	(ept-body-face-font): Ditto.
+	(ept-highlight-face-font): Ditto.
+	(ept-separator-face-font): Ditto.
+	(ept-item-face-font): Ditto.
+	(ept-item-point-face-font): Ditto.
+	(ept-basic-face-font): Ditto.
+	(Advised by Stephen Eglen <eglen@pcg.wustl.edu>)
+
 2002-01-22  Yuuichi Teranishi  <teranisi@gohome.org>
 
 	* samples/sample-ja.ept: Changed function sample.

@@ -15,7 +15,7 @@ Elpoint は Emacs 上で動くプレゼンテーションツールです。
 必要なもの：
 
 * Emacs 21
-* APEL
+* APEL (A Portable Emacs Library -- http://cvs.m17n.org/elisp/APEL/)
 * True Type フォント(東風フォントがお勧め)
   東風フォントは http://www.on.cs.keio.ac.jp/~yasu/jp_fonts.html から
   入手可能です。東風フォントパッケージ付属の fonts.dir.xtt の設定(*1)

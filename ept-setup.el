@@ -41,9 +41,18 @@
  ;; Another setting is not implemented yet.
  )
 
-(setq ept-basic-face-font (if (query-fontset "fontset-gothic16")
-			      "fontset-gothic16"
-			    (face-font 'default)))
+(defsubst ept-setup-fontset-maybe (name)
+  (if (query-fontset name)
+      name
+    (face-font 'default)))
+
+(setq ept-title-face-font (ept-setup-fontset-maybe      "fontset-gothic54"))
+(setq ept-body-face-font (ept-setup-fontset-maybe       "fontset-gothic36"))
+(setq ept-highlight-face-font (ept-setup-fontset-maybe  "fontset-gothic36"))
+(setq ept-separator-face-font (ept-setup-fontset-maybe  "fontset-gothic16"))
+(setq ept-item-face-font (ept-setup-fontset-maybe       "fontset-gothic48"))
+(setq ept-item-point-face-font (ept-setup-fontset-maybe "fontset-gothic48"))
+(setq ept-basic-face-font (ept-setup-fontset-maybe      "fontset-gothic16"))
 
 ;; URL retrieval setup.
 (cond
@@ -77,11 +86,11 @@
 (eval-after-load "font-lock"
   '(font-lock-add-keywords
     'ept-mode
-    '(("(\\(ept-page\\)"
+    '(("(\\(ept-page\\)[ \t\n]*"
        (1 font-lock-function-name-face))
-      ("(\\(ept-title\\)"
+      ("(\\(ept-title\\)[ \t\n]*"
        (1 font-lock-type-face))
-      ("(\\(ept-[a-z-]*\\)"
+      ("(\\(ept-[a-z-]*\\)[ \t\n]*"
        (1 font-lock-keyword-face)))))
 
 ;; autoload setup.

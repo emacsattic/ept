@@ -104,13 +104,13 @@ If it is called interactively, version string is appeared on minibuffer."
      (goto-char (point-max))
      ,@ body))
 
-(defvar ept-title-face-font "fontset-gothic54")
-(defvar ept-body-face-font "fontset-gothic36")
-(defvar ept-highlight-face-font "fontset-gothic36")
-(defvar ept-separator-face-font "fontset-gothic16")
-(defvar ept-item-face-font "fontset-gothic48")
-(defvar ept-item-point-face-font "fontset-gothic48")
-(defvar ept-basic-face-font "fontset-gothic16")
+(defvar ept-title-face-font (face-font 'default))
+(defvar ept-body-face-font (face-font 'default))
+(defvar ept-highlight-face-font (face-font 'default))
+(defvar ept-separator-face-font (face-font 'default))
+(defvar ept-item-face-font (face-font 'default))
+(defvar ept-item-point-face-font (face-font 'default))
+(defvar ept-basic-face-font (face-font 'default))
 
 (defgroup ept nil
   "Elpoint -- Yet Another Presentation Tool for Emacsen"
