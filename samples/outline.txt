@@ -55,5 +55,5 @@ outline mode
 Local variables:
 mode: outline
 user-full-name: "Yuuichi Teranishi"
-user-mail-address: "teranisi@quickhack.net"
+user-mail-address: "teranisi@gohome.org"
 end:
