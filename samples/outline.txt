@@ -1,0 +1,59 @@
+Easy presentation using
+outline mode
+
+* Title
+** Title is toplevel heading.
+** Other heading becomes an item.
+   Texts other than heading are printed as-is.
+   Newlines before texts are ignored.
+   Auto-indenting is not implemented.
+*** Depth of the heading corresponds item depth.
+
+* Pause
+** No pause feature.
+
+* Pause
+** No pause feature.
+** ...But you can emulate it by writing incremental pages.
+
+* Inline images
+** An item enclosed with <> is treated as an inline.
+   Following is <logo.png>.
+** <logo.png>
+
+* Lisp evaluation
+** An item begins with ( is evaluated.
+** (ept-text "    " (current-time-string) "\n")
+
+* Animation
+
+** Type SPC Key
+** (progn (insert "   ") (ept-inline "logo.png"))
+
+* Animation
+
+** Type SPC Key
+** (let ((pos (point)))(beginning-of-line) (delete-region (point) pos)(setq pos (point))(insert "   ") (ept-inline "logo2.png")(sit-for 0.1)(delete-region pos (point))(setq pos (point))(insert "   ") (ept-inline "logo3.png")(sit-for 0.1)(delete-region pos (point))(setq pos (point))(insert "   ") (ept-inline "logo.png")))
+
+* Skip
+** If the toplevel heading string is empty, the page is skipped.
+
+*
+...So this page is skipped.
+
+* Finish
+
+   Visit
+
+        http://www.gohome.org/elpoint/
+
+   for upcoming information.
+
+** <logo.png>
+
+
+Local variables:
+mode: outline
+user-full-name: "Yuuichi Teranishi"
+user-mail-address: "teranisi@quickhack.net"
+end:

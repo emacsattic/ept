@@ -1,0 +1,143 @@
+;; This presentation was used in BSD/Linux Day 2001 (Dec 7 2001)
+;; in Yokohama, Japan.
+
+(ept-page
+ (ept-align-center
+  (ept-text "\n\n\n\n\n")
+  (ept-inline "wl-logo.xpm")
+  (ept-text "\n\n寺西裕一 <teranisi@gohome.org>")))
+
+(ept-page
+ (ept-title "Overview")
+ (ept-itemize
+  (ept-item "Wanderlust とは？")
+  (ept-item "特徴")
+  (ept-item "2.8.0 の主な新機能")
+  (ept-item "Open Source Community に対する期待")))
+
+(ept-page
+ (ept-title "Wanderlust とは？")
+ (ept-itemize
+  (ept-item "Emacs/XEmacs 上で動くメール/ニュースリーダの一つ"))
+ (ept-text "    現在の status
+       2.6.1 (こないだ)＝ 最新 stable
+       2.7.6 (現在)    ＝ 最新 beta
+       2.8.0 (もうすぐ)＝ 次期 stable"))
+
+(ept-page
+ (ept-title "Wanderlust の特徴")
+ (ept-itemize
+  (ept-item "見やすい")
+  (ept-item "IMAP4 サポート")
+  (ept-item "いろいろなフォルダ型")))
+
+(ept-page
+ (ept-title "見やすい")
+ (ept-inline "e21.png"))
+(ept-pause
+ (goto-char (point-max)))
+(ept-pause
+ (ept-text "← 見やすい？"))
+
+(ept-page
+ (ept-title "IMAP サポート")
+ (ept-itemize
+  (ept-item "サーバ側での未読管理・検索")
+  (ept-item "国際化")
+  (ept-item "パートフェッチ")
+  (ept-item "オフライン処理(prefetch,refile 等)")))
+
+(ept-page
+ (ept-title "いろいろなフォルダ型")
+ (ept-itemize
+  (ept-item "IMAP(%), POP(&), MH(+), Maildir(.),
+   圧縮ファイル($) など")
+  (ept-item "仮想フォルダ"))
+ (ept-text "     マルチ：複数フォルダを組合せる
+       *%inbox,-fj.rec.tv
+     フィルタ：条件を満たすメールのみ
+       /from:teranisi/%inbox
+     パイプ：移動(ダウンロード)する
+       |&teranisi@popserver|+inbox"))
+
+(ept-page
+ (ept-title "2.8.0 の主な新機能")
+ (ept-itemize
+  (ept-item "shimbun フォルダ")
+  (ept-item "namazu フォルダ")
+  (ept-item "ACAP 対応")))
+
+(ept-page
+ (ept-title "shimbun フォルダ")
+ (ept-text "  shimbun：「Web 上の新聞やML アーカイブが一つの
+  メールフォルダのように見える機能」\n")
+ (insert "\n")
+ (ept-inline "figure.xpm"))
+
+(ept-page
+ (ept-title "shimbun フォルダ")
+ (ept-text '("  指定例：" . ept-highlight-face)
+	   "
+    @asahi.sports   → 朝日新聞スポーツ面
+    @m17n.mule-ja   → mule-ja ML アーカイブ\n"
+	   '("  対応サイト：\n" . ept-highlight-face)
+	   "    朝日新聞，讀売新聞，毎日新聞，CNET，impress，
+    slashdot.jp，ZDNet，各種メーリングリストアーカイブ，
+    掲示版，小泉内閣メールマガジン，HNS，etc, etc.\n\n"))
+(ept-pause
+ (insert "      ")
+ (ept-inline "shimbun.png")
+ (goto-char (point-min)))
+(ept-pause
+ (goto-char (point-max)))
+
+(ept-page
+ (ept-title "namazu フォルダ")
+ (ept-text "   namazu の全文検索結果の集合が仮想的な一つの
+  メールフォルダのように見える\n")
+ (ept-text '("   指定例：" . ept-highlight-face)
+	   "
+     [阪神]
+     [イチロー or 新庄] 等\n\n")
+ (ept-text
+  '("  … オフライン環境，リファイル先を忘れた時に便利\n" .
+    'ept-highlight-face)))
+
+(ept-page
+ (insert "      ")
+ (ept-inline "http://www.gohome.org/wl/wl-e21.png"))
+
+(ept-page
+ (ept-title "ACAP 対応")
+ (ept-text "  メーラの設定もネットワーク側に持たせる
+  DHCP, SLP と組み合わせて Plug & Play\n")
+ (ept-inline "acap.xpm"))
+
+(ept-page
+ (ept-title "Open Source Community に対する期待"))
+(ept-pause
+ (insert "\n\n")
+ (ept-text "   求む協力者(宣伝)。\n")
+ (insert "\n\n"))
+(ept-pause
+ (ept-text '("    MHC        " . ept-highlight-face)
+	   "Emacs で動くスケジューラ\n"
+	   '("              (http://www.quickhack.net/mhc/)\n"
+	     . ept-highlight-face)
+	   '("    emacs-w3m  " . ept-highlight-face)
+	   "Emacs で動く Web ブラウザ\n"
+	   '("              (http://emacs-w3m.namazu.org/)\n"
+	     . ept-highlight-face)
+	   '("    Elserv     " . ept-highlight-face)
+	   "Emacs で動く Web サーバ\n"
+	   '("              (http://elserv.sourceforge.net/)\n"
+	     . ept-highlight-face)))
+(ept-pause
+ (ept-slide-line 
+  (concat (propertize "    Wanderlust "
+		      'face  'ept-highlight-face)
+	  (propertize "Emacs で動くメーラ"
+		      'face  'ept-body-face)))
+ (insert "\n\n")
+ (ept-text '("              (http://www.gohome.org/wl/)"
+	     . ept-highlight-face)))

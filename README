@@ -1,0 +1,63 @@
+
+Elpoint -- Yet Another Presentation Tool on Emacsen
+
+Elpoint is a presentation tool which runs on Emacs.
+Currently, it works only on Emacs 21.
+
+Features:
+
+* Easy to create and display a presentation.
+* Dynamic presentation content can be developed using emacs lisp.
+* A major mode `ept-mode' is included which supports editing elpoint
+  presentation.
+* Inline images. Images can be retrieved from Internet.
+* Create a presentation from outline-mode text.
+
+Requirements:
+
+* Emacs 21
+* APEL
+* True Type font (Kochi font is recommended)
+  You can obtain kochi font from following site:
+
+    http://www.on.cs.keio.ac.jp/~yasu/jp_fonts.html
+
+  If you use `fonts.dir.xtt' included in the package (*1),
+  emacs font setting for Elpoint is easy.
+
+Install:
+
+* Extract tarball.
+* Type `make install'.
+
+Usage:
+
+Add following line to your .emacs.
+
+(require 'ept-setup)
+
+If you installed kochi font using above (*1) setting, font setup is also done
+by above.
+
+If you want to use a font other than kochi font, add following lines to your
+.emacs
+
+(setq ept-use-kochi nil)
+(require 'ept-setup)
+
+and add your own font setting like ept-kochi-x.el.
+
+Since ept-setup is just a sample setting, you can setup Elpoint
+without ept-setup.
+
+Basically, presentations are written by emacs lisp.
+If you  C-x C-f (find-file) a file with '.ept' suffix ,
+the buffer becomes `ept-mode' (which is derived from emacs-lisp-mode).
+
+See the sample presentations to know the presentation syntax of Elpoint.
+
+There are some sample presentation files in the samples/ directory
+of the package. See samples/README for more detail.
+
+--
+Yuuichi Teranishi <teranisi@gohome.org>

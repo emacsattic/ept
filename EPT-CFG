@@ -1,0 +1,11 @@
+;;; -*-Emacs-Lisp-*-
+
+;; EPT-CFG: installation setting about Elpoint.
+
+;;; Code:
+
+;; Specify following if you don't want to install lisp files to the
+;; default directory.
+;(setq EPT_DIR "/opt/emacs/site-lisp/ept")
+
+;;; EPT-CFG ends here

@@ -1,0 +1,13 @@
+このディレクトリには、Elpoint 用のサンプル・プレゼンテーション・ファ
+イルが置かれています。
+
+	sample-ja.ept		Elpoint のおおまかな機能のデモ
+        outline-ja.txt		outline モードのデモ
+	bsd-linux-day.ept	発表ファイルのサンプル
+
+表示するには、M-x ept-play-file を実行し、上記ファイルのファイル名を
+入力してください。
+もしくは、上記ファイルを find-file したバッファで、M-x ept-play-buffer
+(.ept ファイルなら C-c C-e) を実行してください。
+C-u M-x ept-play-buffer (.ept ファイルなら C-u C-c C-e) を実行すると、
+現在のカーソルがあるページから表示がスタートします。

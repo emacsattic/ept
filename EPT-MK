@@ -1,0 +1,134 @@
+;;; -*-Emacs-Lisp-*-
+
+;; EPT-MK: installer for EPT.
+
+;;; Code:
+
+(defvar default-load-path load-path)
+
+(add-to-list 'load-path
+	     (expand-file-name "../../site-lisp/apel" data-directory))
+(add-to-list 'load-path
+	     (expand-file-name "." data-directory))
+
+(condition-case nil
+    (require 'install)
+  (error (error "Please install APEL 8.7 or later.")))
+
+(defvar PREFIX install-prefix)
+(defvar LISP_BASE_DIR (install-detect-elisp-directory PREFIX))
+
+(add-to-list 'default-load-path LISP_BASE_DIR)
+(add-to-list 'load-path LISP_BASE_DIR)
+
+(add-to-list 'load-path (expand-file-name "."))
+
+(defvar EPT_PREFIX "elpoint")
+
+(defvar LISP_DIR (expand-file-name EPT_PREFIX LISP_BASE_DIR))
+(defvar ICON_SRC_DIR "./icons")
+(defvar ICON_DIR nil)
+
+(defvar PACKAGE_DIR
+  (if (boundp 'early-packages)
+      (let ((dirs (append (if early-package-load-path
+			      early-packages)
+			  (if late-package-load-path
+			      late-packages)
+			  (if last-package-load-path
+			      last-packages)))
+	    dir)
+	(while (not (file-exists-p
+		     (setq dir (car dirs))))
+	  (setq dirs (cdr dirs)))
+	dir)))
+
+;;; functions.
+(defun config-icon (&optional packagedir)
+  "Examine icon directory."
+  (let ((icon-dir (car command-line-args-left)))
+    (setq ICON_DIR
+	  (if (string= icon-dir "NONE")
+	      (if packagedir
+		  (expand-file-name "etc/ept" packagedir)
+		(expand-file-name "ept/icons" data-directory))
+	    icon-dir)))
+  (setq command-line-args-left (cdr command-line-args-left)))
+
+(defun config-ept (&optional silent)
+  (let (prefix lisp-dir)
+    (and (setq prefix (car command-line-args-left))
+	 (or (string-equal "NONE" prefix)
+	     (setq PREFIX prefix)))
+    (setq command-line-args-left (cdr command-line-args-left))
+    (and (setq lisp-dir (car command-line-args-left))
+	 (or (string-equal "NONE" lisp-dir)
+	     (setq LISP_BASE_DIR lisp-dir)))
+    (setq command-line-args-left (cdr command-line-args-left))
+    (setq command-line-args-left (cdr command-line-args-left)))
+  (config-icon)
+  (load-file "EPT-CFG")
+  (load-file "EPT-ELS")
+  (unless silent
+    (princ "\n")
+    (princ (format "LISP_DIR=%s\n" LISP_DIR))
+    (if ICON_DIR
+	(princ (format "ICON_DIR=%s\n" ICON_DIR)))))
+
+(defun compile-ept ()
+  (config-ept)
+  (compile-elisp-modules ept-modules-to-compile "."))
+
+(defun install-ept ()
+  (config-ept 'silent)
+  (install-elisp-modules ept-modules	 "." LISP_DIR)
+;  (install-files (directory-files ICON_SRC_DIR nil "\\.\\(gif\\|png\\)$")
+;		 ICON_SRC_DIR ICON_DIR nil t))
+  )
+
+(defun config-ept-package ()
+  (let (package-dir exec-dir)
+    (and (setq package-dir (car command-line-args-left))
+	 (or (string= "NONE" package-dir)
+	     (setq PACKAGE_DIR package-dir)))
+    (setq command-line-args-left (cdr command-line-args-left))
+    (config-icon package-dir)
+    (load-file "EPT-CFG")
+    (load-file "EPT-ELS")
+    (princ "\n")
+    (princ (format "PACKAGE_DIR=%s\n" PACKAGE_DIR))))
+
+(defun compile-ept-package ()
+  (config-ept-package)
+  (setq autoload-package-name "ept")
+  (add-to-list 'command-line-args-left ".")
+  (batch-update-directory)
+
+  (add-to-list 'command-line-args-left ".")
+  (Custom-make-dependencies)
+
+  (compile-elisp-modules (append ept-modules-to-compile
+				 '(auto-autoloads custom-load))
+			 "."))
+
+(defun install-ept-package ()
+  (config-ept-package)
+  (install-elisp-modules (append ept-modules
+				 '(auto-autoloads custom-load))
+			 "./"
+			 (expand-file-name EPT_PREFIX
+					   (expand-file-name "lisp"
+							     PACKAGE_DIR)))
+  (install-files (directory-files ICON_SRC_DIR nil "\\.\\(gif\\|png\\)$")
+		 ICON_SRC_DIR
+		 (expand-file-name EPT_PREFIX
+				   (expand-file-name "etc"
+						     PACKAGE_DIR))
+		 nil t)
+  (install-files EXECS EXEC_SRC_DIR
+		 (expand-file-name EPT_PREFIX
+				   (expand-file-name "etc"
+						     PACKAGE_DIR))
+		 nil t))
+
+;;; EPT-MK ends here

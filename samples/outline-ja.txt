@@ -1,0 +1,59 @@
+outline モードでお手軽
+プレゼンテーション
+
+* タイトル
+** toplevel の heading がタイトルになる
+** 2 段以降の heading はアイテムになる
+   heading 以外はそのままテキストになる
+   テキスト部の最初の改行は無視される
+   自動でインデントをあわせたほうがいい？
+*** heading の深さが item の深さに対応
+
+* 一時停止
+** 一時停止はできない。
+
+* 一時停止
+** 一時停止はできない。
+** …といっても徐々に変化するページを書けばよいのだが。
+
+* 画像の張り付け
+** <> で囲まれたアイテムは inline になる
+   下記は <logo.png> と書いてあるだけ。
+** <logo.png>
+
+* Lisp 式の評価
+** 括弧 ( で始まるアイテムは実行時に eval される
+** (ept-text "    " (current-time-string) "\n")
+
+* …てことでアニメーション
+
+** SPC を押してください
+** (progn (insert "   ") (ept-inline "logo.png"))
+
+* …てことでアニメーション
+
+** SPC を押してください
+** (let ((pos (point)))(beginning-of-line) (delete-region (point) pos)(setq pos (point))(insert "   ") (ept-inline "logo2.png")(sit-for 0.1)(delete-region pos (point))(setq pos (point))(insert "   ") (ept-inline "logo3.png")(sit-for 0.1)(delete-region pos (point))(setq pos (point))(insert "   ") (ept-inline "logo.png")))
+
+* スキップ
+** toplevel の heading 文字列が空なら対応するページはスキップされる
+
+*
+…というわけでここはスキップされる。
+
+* おしまい
+
+   アップデートなどの情報は
+
+        http://www.gohome.org/elpoint/
+
+   に掲示されますので御覧ください
+
+** <logo.png>
+
+
+Local variables:
+mode: outline
+user-full-name: "Yuuichi Teranishi"
+user-mail-address: "teranisi@quickhack.net"
+end:

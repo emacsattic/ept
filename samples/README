@@ -1,0 +1,12 @@
+In this directory, there are some Elpoint sample presentation file.
+
+	sample.ept		Demonstration of Elpoint
+        outline.txt		Demonstration of outline mode
+	bsd-linux-day.ept	Sample presentation (In Japanese)
+
+To play the sample presentation, enter M-x ept-play-file and
+input above filename.
+Likewise, you can play them by entering M-x ept-play-buffer
+(C-c C-e for .ept file) in the buffer after find-file.
+the presentation starts from the page under the cursor point if you enter
+C-u M-x ept-play-buffer (C-u C-c C-e in .ept file).

@@ -1,0 +1,52 @@
+
+Elpoint -- Yet Another Presentation Tool on Emacsen
+
+Elpoint は Emacs 上で動くプレゼンテーションツールです。
+現在のところ Emacs 21 のみに対応しています。
+
+特徴：
+
+* 手軽にプレゼンテーションを作成・表示できる。
+* Emacs lisp を用いた動的なプレゼンテーションを作成可能。
+* 編集、プレビュー等をサポートするメジャーモード ept-mode を用意。
+* 画像のインライン表示。インターネットからの画像取り寄せ等も可能。
+* outline モードからのプレゼンテーション作成
+
+必要なもの：
+
+* Emacs 21
+* APEL
+* True Type フォント(東風フォントがお勧め)
+  東風フォントは http://www.on.cs.keio.ac.jp/~yasu/jp_fonts.html から
+  入手可能です。東風フォントパッケージ付属の fonts.dir.xtt の設定(*1)
+  がしてあると、あとで楽です。
+
+インストール：
+
+* アーカイブを適当なところで展開します。
+* `make install' を実行します。
+
+使い方：
+
+.emacs 等に
+
+(require 'ept-setup)
+
+と設定します。
+東風フォントが (*1) の設定でインストールされている場合は、上記により
+フォントの設定も行われます。
+
+東風フォント以外を利用する場合は、
+
+(setq ept-use-kochi nil)
+(require 'ept-setup)
+
+とし、ept-kochi-x.el にあるような適当なフォントの設定を自前で行ってください。
+また、ept-setup はサンプル設定集にすぎませんので、ept-setup 相当の設定を自分
+で行っても構いません。
+
+samples ディレクトリには、Elpoint 用のサンプル・プレゼンテーション・ファ
+イルが置かれています。詳しくは samples/README.ja を御覧ください。
+
+--
+Yuuichi Teranishi <teranisi@gohome.org>

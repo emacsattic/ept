@@ -1,0 +1,125 @@
+2002-01-21  Yuuichi Teranishi  <teranisi@gohome.org>
+
+	* ept.el (toplevel): Added some autoloading setting.
+	(ept-play-vertical-centering-font-regexp): New user option.
+	(ept-play-mode): Use it.
+	(ept-funcall): New function.
+	(ept-number): Ditto.
+	(ept-play-buffer): Ditto.
+	(ept-dump-buffer): Ditto.
+	(ept-play-file): Ditto.
+	(ept-dump-file): Ditto.
+	(ept-exec-file): New alias.
+	(ept-exec-buffer): Ditto.
+	(ept-play): Set up width and height before creating frame.
+
+	* ept-setup.el (ept-play-frame-parameters): Added setting for
+	left-fringe, right-fringe (for Emacs 21.3)
+	(toplevel): Added some autoloading setting.
+
+	* ept-mode.el (ept-mode-map): Renamed from ept-exec-buffer to
+	ept-play-buffer.
+	(ept-ept-number): Renamed from ept-number.
+	(ept-ept-play-buffer): Renamed from ept-exec-buffer.
+	(ept-exec-file, ept-dump-file, ept-exec-buffer, ept-dump-buffer):
+	Moved and renamed in ept.el
+
+	* ept-align.el (ept-align-right-line): Adjust -1 column from right.
+
+	* EPT-ELS (ept-modules-to-compile): Added ept-outline.
+
+2002-01-17  Yuuichi Teranishi  <teranisi@gohome.org>
+
+	* samples/outline.txt, samples/outline-ja.txt: New file.
+
+	* ept-outline.el: New file.
+
+2002-01-16  Yuuichi Teranishi  <teranisi@gohome.org>
+
+	* ept.el (toplevel): Removed (require 'ept-dump).
+
+	* samples/sample.ept: New file.
+
+	* README: New file.
+
+2002-01-11  Katsumi Yamaoka  <yamaoka@jpl.org>
+
+	* ept.el (ept-title-face): Avoid compile error on Emacs 21.1.
+	(ept-body-face): Ditto.
+	(ept-highlight-face): Ditto.
+	(ept-separator-face): Ditto.
+	(ept-item-face): Ditto.
+	(ept-item-point-face): Ditto.
+	(ept-basic-face): Ditto.
+
+2002-01-11  Yuuichi Teranishi  <teranisi@gohome.org>
+
+	* Release 0.1.1.
+
+	* ept.el (ept-version): Up to 0.1.1.
+
+	* ept-solaris.el: New file.
+
+	* samples/bsd-linux.ept: No need to goto-char (point-min) at the end of
+	ept-page.
+
+	* ept.el (ept-title-face-font): New variable.
+	(ept-body-face-font): Ditto.
+	(ept-highlight-face-font): Ditto.
+	(ept-separator-face-font): Ditto.
+	(ept-item-face-font): Ditto.
+	(ept-item-point-face-font): Ditto.
+	(ept-basic-face-font): Ditto.
+	(ept-title-face): Use ept-title-face-font.
+	(ept-body-face): Likewise.
+	(ept-highlight-face): Ditto.
+	(ept-separator-face): Ditto.
+	(ept-item-face): Ditto.
+	(ept-item-point-face): Ditto.
+	(ept-basic-face): New face.
+	(ept-play-mode-hook): New hook.
+	(ept-play-mode): Run it.
+	(ept-nl): Eliminated.
+	(ept-play): Check ept-basic-face;
+	Set default font of new frame.
+	(ept-play-forward): Fixed dump logic;
+	Eval and skip symbols other than ept macro.
+
+	* ept-setup.el (ept-dump-file): Added autoload setting.
+	(ept-basic-face-font): Setup.
+	(ept-play-frame-parameters): Added line-space.
+
+	* ept-mode.el (ept-mode-hook): New hook.
+	(ept-mode): Run it.
+	(ept-dump-buffer): Set `dir' as an argument of ept-exec-internal.
+
+	* ept-kochi-x.el: Specify 'kochi' family;
+	Added fontset-gothic16.
+
+	* ept-dump.el (ept-make-dump-page): Rewrite.
+	(ept-xwd-dump-page): Changed filename.
+	(ept-imagick-convert-dumped-page): Ditto.
+
+	* ept-align.el: Added copyright notice.
+	(ept-char-pixel-width): Get face from selected-frame;
+	Use 'ept-basic-face instead of 'default.
+	(ept-string-pixel-width): Likewise.
+	(ept-string-pixel-height): Ditto.
+	(ept-default-font-width): Ditto.
+
+	* EPT-ELS (ept-modules-to-compile): Added ept-solaris.
+
+2002-01-08  Yuuichi Teranishi  <teranisi@gohome.org>
+
+	* ept-setup.el (ept-exec-file): Added autoload setting.
+
+	* Release 0.1.0.
+
+2001-12-07  Yuuichi Teranishi  <teranisi@gohome.org>
+
+	* Used in BSD/Linux Day.
+
+2001-12-01  Yuuichi Teranishi  <teranisi@gohome.org>
+
+	* Concept-proof prototype.
+

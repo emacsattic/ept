@@ -1,0 +1,164 @@
+(ept-page
+ (ept-align-center
+  (ept-text '("\n\n\n\nElpoint" . ept-title-face))
+  (ept-text "\n\n\n寺西裕一 Yuuichi Teranishi\nteranisi@gohome.org\n")
+  (ept-text '("\n\nSPC キーを押してください" . ept-highlight-face))))
+
+(ept-page
+ (ept-title "使い方")
+ (ept-itemize
+  (ept-item "1 ページ進む")
+  (ept-itemize
+   (ept-item "右ボタン")
+   (ept-item "SPC"))
+  (ept-item "1 ページ戻る")
+  (ept-itemize
+   (ept-item "左ボタン")
+   (ept-item "DEL"))
+  (ept-item "Elpoint の再生を終了する")
+  (ept-itemize
+   (ept-item "q")))
+ (ept-align-center
+  (ept-text "\nそれでは特徴をみていきましょう")))
+
+(ept-page
+ (ept-title "ウインドウ")
+ (ept-itemize
+  (ept-item "通常は全画面を使います")
+  (ept-item "画面の大きさを自動判定して表示できます"))
+ (ept-text "
+
+   (setq ept-play-frame-width 100
+         ept-play-frame-height 35)
+
+    の様に大きさの指定もできます"))
+
+(ept-page
+ (ept-title "表示位置制御")
+ (ept-itemize
+  (ept-item "表示の位置を制御できます"))
+ (ept-align-center (ept-text "センタリング\n"))
+ (ept-text "左寄せ\n")
+ (ept-align-right (ept-text "右寄せ\n"))
+ (ept-text "
+文字列をそのまま表示さ
+せられますので２カラム
+にすることもできます。"))
+
+(ept-page
+ (ept-title "文字の大きさと色")
+ (ept-item "文字にはさまざまな face を設定できます")
+ (ept-text "\n\n   " '("本日は晴天なり\n" .  'ept-title-face))
+ (ept-text "   " '("本日は晴天なり\n" .  'ept-item-point-face))
+ (ept-text "   " '("本日は晴天なり\n" .  'ept-highlight-face))
+ (ept-text "   " '("本日は晴天なり\n" .  'underline)))
+
+(ept-page
+ (ept-title "行内での face 変更")
+ (ept-item "行の途中でも face を変えられます")
+ (ept-text "      私の名前は" '("寺西" . ept-highlight-face) "です"))
+
+(ept-page
+ (ept-title "行の折り曲げ")
+ (ept-itemize
+  (ept-item "こんなふうにとても長い行もきちんと折曲げて表示しています。ソースコードの中ではここは1行として書かれています")
+  (ept-itemize
+   (ept-item "ここが次の行です。段が深くてもほら大丈夫。\
+Emacs というくらいで、文字列の行はバックスラッシュで連結できます"))
+  (ept-item "A quick brown fox jumps over the lazy dog.  A quick brown fox jumps over the lazy dog.")
+  (ept-item "まだ行末禁則(「。」とかを行頭にださない)処理してません。英語も単語で改行しません(TODO)")))
+
+(ept-page
+ (ept-title "画像")
+ (ept-item "イメージ・ファイルを表示できます")
+ (insert "    ")
+ (ept-inline "logo.png")
+ (ept-text "
+  これは gimp さんで生成しました
+  ありがとう"))
+
+(ept-page
+ (ept-title "対応している画像")
+ (ept-item "あなたの Emacs が表示可能なイメージ・フォーマットは以下の通りです")
+ (ept-text (mapconcat
+	    (lambda (type)
+	      (concat "   " (symbol-name type)))
+	    image-types
+	    "\n")))
+
+(ept-page
+ (ept-title "こんなことも...")
+ (ept-slide-text '("本日は晴天なり\n" . ept-title-face))
+ (ept-slide-text '("本日は晴天なり\n" . ept-item-face))
+ (ept-slide-text "本日は晴天なり\n"))
+
+(ept-page
+ (ept-title "一行ずつ表示")
+ (ept-item "SPC を 2 回押してください"))
+(ept-pause
+ (ept-text "   本日は晴天なり\n"))
+(ept-pause
+ (ept-text "   本日は晴天なり\n"))
+
+(ept-page
+ (ept-title "アニメーション")
+ (ept-item "SPC を押してください")
+ (insert "   ") (ept-inline "logo.png"))
+(ept-pause
+ (let ((pos (point)))
+   ;; うぅむ
+   (beginning-of-line)
+   (delete-region (point) pos)
+   (setq pos (point))
+   (insert "   ") (ept-inline "logo2.png")
+   (sit-for 0.1)
+   (delete-region pos (point))
+   (setq pos (point))
+   (insert "   ") (ept-inline "logo3.png")
+   (sit-for 0.1)
+   (delete-region pos (point))
+   (setq pos (point))
+   (insert "   ") (ept-inline "logo.png")))
+
+(ept-page
+ (ept-title "関数の出力")
+ (ept-item "関数の返り値を表示できます\n")
+ (ept-text "  (current-time-string)\n\n"
+	   (cons (current-time-string) 'ept-highlight-face)
+	   "\n\n\n"
+	   "  (char-list-to-string
+   (nreverse
+    (string-to-char-list \"this is test\")))\n\n"
+	   (cons (char-list-to-string
+		  (nreverse (string-to-char-list "this is test")))
+		 'ept-highlight-face)))
+
+(ept-page
+ (ept-title "先読み機能")
+ (ept-item "Emacs 自身のキャッシュ機能により一度再生すると２回目以降の画像表示は速くなります。"))
+
+(ept-page
+ (ept-title "おしまい")
+ (ept-text "   アップデートなどの情報は
+"
+'("           http://www.gohome.org/elpoint/" . 'ept-highlight-face)
+"
+   に掲示されますので御覧ください
+
+   コメントがあれば
+"
+'("           teranisi@gohome.org" . 'ept-highlight-face)
+"
+   まで送って下さい\n\n")
+ (ept-align-center (ept-inline "logo.png")))
+
+
+ 
+ 
+
+
+ 
+
+
+ 
+

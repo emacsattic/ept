@@ -1,0 +1,158 @@
+(ept-page
+ (ept-align-center
+  (ept-text '("\n\n\n\nElpoint" . ept-title-face))
+  (ept-text "\n\n\nYuuichi Teranishi\nteranisi@gohome.org\n")
+  (ept-text '("\n\nEnter SPC Key" . ept-highlight-face))))
+
+(ept-page
+ (ept-title "How to use")
+ (ept-itemize
+  (ept-item "Forward page")
+  (ept-itemize
+   (ept-item "Right button")
+   (ept-item "SPC"))
+  (ept-item "Backward page")
+  (ept-itemize
+   (ept-item "Left button")
+   (ept-item "DEL"))
+  (ept-item "Quit Elpoint")
+  (ept-itemize
+   (ept-item "q")))
+ (ept-align-center
+  (ept-text "\nOK, Lets see the features")))
+
+(ept-page
+ (ept-title "Window")
+ (ept-itemize
+  (ept-item "Usually, whole display is used.")
+  (ept-item "Detects display size automatically."))
+ (ept-text "
+   You can set frame size explicitly like:
+
+   (setq ept-play-frame-width 100
+         ept-play-frame-height 35)"))
+
+(ept-page
+ (ept-title "Text display control")
+ (ept-itemize
+  (ept-item "Place text whereever you like."))
+ (ept-align-center (ept-text "CENTER\n"))
+ (ept-text "LEFT\n")
+ (ept-align-right (ept-text "RIGHT\n"))
+ (ept-text "
+You can make a 2 column
+page by writing texts as-
+is."))
+
+(ept-page
+ (ept-title "Text size and color")
+ (ept-item "Use any text faces as you like.")
+ (ept-text "\n\n   " '("Hello world\n" .  'ept-title-face))
+ (ept-text "   " '("Hello world\n" .  'ept-item-point-face))
+ (ept-text "   " '("Hello world\n" .  'ept-highlight-face))
+ (ept-text "   " '("Hello world\n" .  'underline)))
+
+(ept-page
+ (ept-title "Change text faces")
+ (ept-item "Faces can be mixed")
+ (ept-text "      My name is " '("Yuuichi Teranishi" . ept-highlight-face) "."))
+
+(ept-page
+ (ept-title "Folding")
+ (ept-itemize
+  (ept-item "A very long line is properly folded, but english word-wise folding is not implemented yet. The source code of this line is made up by a single line.")
+  (ept-itemize
+   (ept-item "This is the next line. Even if the indentation changes, folding is propery handled.\
+ You can also connect the line using backslash. Yes, Emacs string."))))
+
+(ept-page
+ (ept-title "Images")
+ (ept-item "You can display inline image.")
+ (insert "    ")
+ (ept-inline "logo.png")
+ (ept-text "
+  Special thanks to gimp."))
+
+(ept-page
+ (ept-title "Image formats")
+ (ept-item "Your Emacs can display following image formats:")
+ (ept-text (mapconcat
+	    (lambda (type)
+	      (concat "   " (symbol-name type)))
+	    image-types
+	    "\n")))
+
+(ept-page
+ (ept-title "Special Effects.")
+ (ept-slide-text '("a test message\n" . ept-title-face))
+ (ept-slide-text '("another test message\n" . ept-item-face))
+ (ept-slide-text "yet another test message\n"))
+
+(ept-page
+ (ept-title "Pause")
+ (ept-item "Enter SPC key (twice) to proceed."))
+(ept-pause
+ (ept-text "   Happy hacking!\n"))
+(ept-pause
+ (ept-text "   Happy hacking!\n"))
+
+(ept-page
+ (ept-title "Animation")
+ (ept-item "Enter SPC key")
+ (insert "   ") (ept-inline "logo.png"))
+(ept-pause
+ (let ((pos (point)))
+   ;; Humm..
+   (beginning-of-line)
+   (delete-region (point) pos)
+   (setq pos (point))
+   (insert "   ") (ept-inline "logo2.png")
+   (sit-for 0.1)
+   (delete-region pos (point))
+   (setq pos (point))
+   (insert "   ") (ept-inline "logo3.png")
+   (sit-for 0.1)
+   (delete-region pos (point))
+   (setq pos (point))
+   (insert "   ") (ept-inline "logo.png")))
+
+(ept-page
+ (ept-title "Return value of the functions")
+ (ept-item "You can display the return value of the functions\n")
+ (ept-text "  (current-time-string)\n\n"
+	   (cons (current-time-string) 'ept-highlight-face)
+	   "\n\n\n"
+	   "  (char-list-to-string
+   (nreverse
+    (string-to-char-list \"this is test\")))\n\n"
+	   (cons (char-list-to-string
+		  (nreverse (string-to-char-list "this is test")))
+		 'ept-highlight-face)))
+
+(ept-page
+ (ept-title "Prefetching")
+ (ept-item "Since Emacs caches images, image displaying is faster in second time."))
+
+(ept-page
+ (ept-title "Finish")
+ (ept-text "   Visit
+"
+'("           http://www.gohome.org/elpoint/" . 'ept-highlight-face)
+"
+   for upcoming information.
+
+   If you have any comments, contact
+"
+'("           teranisi@gohome.org\n\n" . 'ept-highlight-face))
+ (ept-align-center (ept-inline "logo.png")))
+
+
+ 
+ 
+
+
+ 
+
+
+ 
+

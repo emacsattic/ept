@@ -1,0 +1,29 @@
+;;; -*-Emacs-Lisp-*-
+
+;; EPT-ELS: list of Elpoint modules to install
+
+;;; Code:
+
+(defvar ept-modules-to-compile
+  '(ept ept-align ept-dump ept-mode ept-setup ept-kochi-x
+    ept-solaris ept-outline))
+
+(defvar ept-modules-not-to-compile '())
+
+(mapcar (function
+	 (lambda (cell)
+	   (let ((c-module (car cell))
+		 (i-modules (cdr cell)))
+	     (if (module-installed-p c-module)
+		 (setq ept-modules-to-compile
+		       (nconc ept-modules-to-compile i-modules))
+	       (setq elpt-modules-not-to-compile
+		     (nconc ept-modules-not-to-compile i-modules))))))
+	'((w3m		ept-w3m)
+	  ;; Add modules with dependency here.
+	  ))
+
+(setq ept-modules (append ept-modules-to-compile
+			  ept-modules-not-to-compile))
+
+;;; EPT-ELS ends here
